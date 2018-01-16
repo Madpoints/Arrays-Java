@@ -1,22 +1,39 @@
 package com.Madpoints;
 
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) {
-        int[] myArray = new int[10]; //{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-//        myArray[5] = 50;
+    private static Scanner scanner = new Scanner(System.in);
 
-        double[] myDoubleArray = new double[10];
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = i * 10;
+    public static void main(String[] args) {
+        int[] myInts = getInts(5);
+
+        for (int i = 0; i < myInts.length; i++) {
+            System.out.println("Element " + i + " == " + myInts[i]);
         }
 
-        printArray(myArray);
+        System.out.println("The average of the array is " + averageArray(myInts));
     }
 
-    public static void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("Element " + i + " = " + array[i]);
+    public static int[] getInts(int number) {
+        System.out.println("Enter " + number + " integer values.\r");
+        int[] values = new int[number];
+
+        for (int i = 0; i < values.length; i++) {
+            values[i] = scanner.nextInt();
         }
+
+        return values;
+    }
+
+    public static double averageArray(int[] array) {
+        int total = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            total += array[i];
+        }
+
+        return total / array.length;
     }
 }
